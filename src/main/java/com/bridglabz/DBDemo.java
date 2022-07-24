@@ -18,13 +18,16 @@ public class DBDemo {
             connection = DriverManager.getConnection(jdbcURL, userName, password);
             Statement statement = connection.createStatement();
 
-//            PreparedStatement statement = connection.prepareStatement("UPDATE employee SET salary=5000000.00 WHERE name='Terisa'");
-//            statement.executeUpdate();
+//           PreparedStatement statement = connection.prepareStatement("UPDATE employee SET salary=5000000.00 WHERE name='Terisa'");
+
+//            ResultSet resultSet = statement.executeQuery("SELECT SUM(salary) FROM employee WHERE gender = 'M' GROUP BY gender ");
 
 
-             ResultSet resultSet = statement.executeQuery(" select * from employee where start BETWEEN CAST('2020-02-05' AS DATE) AND DATE(NOW()); ");
+            ResultSet resultSet = statement.executeQuery(" SELECT avg(salary)  FROM `employee` ");
+
             while (resultSet.next()) {
-                System.out.println(resultSet.getInt(1) + " " + resultSet.getString(2) + " " + resultSet.getString(3) + " " + resultSet.getString(4) + " " + resultSet.getString(5));
+//              System.out.println(resultSet.getInt(1) + " " + resultSet.getString(2) + " " + resultSet.getString(3) + " " + resultSet.getString(4) + " " + resultSet.getString(5));
+                System.out.println("Sum of the all  salary " + resultSet.getDouble("avg(salary)"));
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
