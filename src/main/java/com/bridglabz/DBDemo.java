@@ -20,14 +20,15 @@ public class DBDemo {
 
 //           PreparedStatement statement = connection.prepareStatement("UPDATE employee SET salary=5000000.00 WHERE name='Terisa'");
 
-//            ResultSet resultSet = statement.executeQuery("SELECT SUM(salary) FROM employee WHERE gender = 'M' GROUP BY gender ");
+//           ResultSet resultSet = statement.executeQuery("SELECT SUM(salary) FROM employee WHERE gender = 'M' GROUP BY gender ");
+//            statement.execute("insert into employee values (4,'vani','F',2000000,'2022-07-25')");
 
 
-            ResultSet resultSet = statement.executeQuery(" SELECT avg(salary)  FROM `employee` ");
+            ResultSet resultSet = statement.executeQuery(" SELECT *  FROM employee ");
 
             while (resultSet.next()) {
-//              System.out.println(resultSet.getInt(1) + " " + resultSet.getString(2) + " " + resultSet.getString(3) + " " + resultSet.getString(4) + " " + resultSet.getString(5));
-                System.out.println("Sum of the all  salary " + resultSet.getDouble("avg(salary)"));
+                System.out.println(resultSet.getInt(1) + " " + resultSet.getString(2) + " " + resultSet.getString(3) + " " + resultSet.getString(4) + " " + resultSet.getString(5));
+//                System.out.println("Sum of the all  salary " + resultSet.getDouble("avg(salary)"));
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -37,8 +38,8 @@ public class DBDemo {
         }
     }
 
-
 }
+
 
 
 
